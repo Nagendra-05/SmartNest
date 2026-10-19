@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Your home, in good hands. · SmartNest</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body data-role="resident">
+
+
+    <a class="skip" href="#main">
+        Skip to content
+    </a>
+
+
+
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+
+        <a class="brand" href="login.html">
+
+            <span class="brand-icon">
+                ▥
+            </span>
+
+            <span>
+                SmartNest
+                <small>
+                    APARTMENT COMMUNITY
+                </small>
+            </span>
+
+        </a>
+
+
+
+        <p class="nav-label">
+            RESIDENT WORKSPACE
+        </p>
+
+
+
+        <nav aria-label="Main navigation">
+
+            <a href="dashboard.html">
+                Overview
+            </a>
+
+            <a href="#booking">
+                Maintenance & Book a service
+            </a>
+
+            <a href="#community">
+                Community
+            </a>
+
+        </nav>
+
+
+
+
+
+        <div class="sidebar-note">
+
+
+            <span>
+                COMMUNITY FIRST
+            </span>
+
+
+            <h3>
+                A better place to call home.
+            </h3>
+
+
+            <p>
+                Maintenance and community, together in one place.
+            </p>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+
+
+
+    <!-- Workspace -->
+    <div class="workspace">
+
+
+        <div id="navbar"></div>
+
+
+
+
+
+        <main id="main" class="dashboard">
+
+
+
+
+
+            <!-- Page Header -->
+            <header class="page-heading">
+
+
+                <div>
+
+
+                    <p class="eyebrow">
+                        YOUR COMMUNITY, CONNECTED
+                    </p>
+
+
+                    <h1>
+                        Your home, in good hands.
+                    </h1>
+
+
+                    <p>
+                        Everything you need to keep apartment life running smoothly.
+                    </p>
+
+
+                </div>
+
+
+
+                <span class="today" id="today"></span>
+
+
+            </header>
+
+
+
+
+
+
+
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+
+
+                <div>
+
+
+                    <p class="eyebrow">
+                        RESIDENT PORTAL
+                    </p>
+
+
+                    <h2 id="welcomeUser">
+                        Welcome home.
+                    </h2>
+
+
+                    <p>
+                        Report a repair. Find a specialist. Stay connected.
+                    </p>
+
+
+                    <span id="userEmail"></span>
+
+
+                    <span class="badge" id="userRole"></span>
+
+
+                </div>
+
+
+
+
+
+                <div class="building-art" aria-hidden="true">
+
+                    ▥
+
+                    <span>
+                        ▥
+                    </span>
+
+                    ▥
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <!-- Resident Statistics -->
+            <div id="residentStats" class="stats-grid"></div>
+
+
+
+
+
+
+
+
+
+            <div class="two-column">
+
+
+
+
+
+                <!-- Maintenance Request -->
+                <section class="panel" id="maintenance">
+
+
+                    <div class="section-heading">
+
+
+                        <div>
+
+
+                            <h2>
+                                Create a maintenance request
+                            </h2>
+
+
+                            <p>
+                                A small fix starts with a simple request.
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                    <form onsubmit="event.preventDefault(); createRequest()">
+
+
+
+                        <label for="service_type">
+                            Service category
+                        </label>
+
+
+                        <select id="service_type">
+
+
+                            <option value="Plumbing">
+                                Plumbing
+                            </option>
+
+
+                            <option value="Electrical">
+                                Electrical
+                            </option>
+
+
+                            <option value="Cleaning">
+                                Cleaning
+                            </option>
+
+
+                            <option value="Carpentry">
+                                Carpentry
+                            </option>
+
+
+                        </select>
+
+
+
+
+
+                        <label for="description">
+                            What needs attention?
+                        </label>
+
+
+                        <textarea
+                            id="description"
+                            required
+                            maxlength="2000"
+                            placeholder="Add the details here…">
+                        </textarea>
+
+
+
+
+
+                        <label for="priority">
+                            Priority
+                        </label>
+
+
+                        <select id="priority">
+
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+
+                            <option value="High">
+                                High
+                            </option>
+
+
+                        </select>
+
+
+
+
+
+                        <button type="submit">
+
+                            Submit maintenance request
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+
+
+                        <p 
+                            id="message"
+                            class="feedback"
+                            role="status"
+                            aria-live="polite">
+                        </p>
+
+
+
+                    </form>
+
+
+                </section>
+
+
+
+
+
+
+
+
+
+                <!-- Service Booking -->
+                <section class="panel" id="booking">
+
+
+                    <div class="section-heading">
+
+
+                        <div>
+
+
+                            <h2>
+                                Book a service
+                            </h2>
+
+
+                            <p>
+                                Select a pending request, then choose a provider and slot.
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                    <label for="bookingRequest">
+                        Maintenance request
+                    </label>
+
+
+                    <select id="bookingRequest"></select>
+
+
+
+
+
+                    <label for="providerService">
+                        Service specialist
+                    </label>
+
+
+                    <select id="providerService">
+
+
+                        <option value="Plumber">
+                            Plumber
+                        </option>
+
+
+                        <option value="Electrician">
+                            Electrician
+                        </option>
+
+
+                        <option value="Cleaner">
+                            Cleaner
+                        </option>
+
+
+                        <option value="Carpenter">
+                            Carpenter
+                        </option>
+
+
+                    </select>
+
+
+
+
+
+                    <button 
+                        type="button"
+                        onclick="getProviders()">
+
+                        Find available providers
+
+                    </button>
+
+
+
+
+                    <div id="providers" class="card-grid"></div>
+
+
+                    <div id="slots" class="card-grid"></div>
+
+
+
+
+                    <p 
+                        id="bookingMessage"
+                        class="feedback"
+                        role="status">
+                    </p>
+
+
+
+                </section>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- Maintenance Requests -->
+            <section class="panel" id="request-section">
+
+
+                <div class="section-heading">
+
+
+                    <div>
+
+
+                        <h2>
+                            My maintenance requests
+                        </h2>
+
+
+                        <p>
+                            Follow each repair from reported to completed.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+                <div class="toolbar">
+
+
+                    <input
+                        id="requestSearch"
+                        type="search"
+                        placeholder="Search complaint or service…"
+                        aria-label="Search requests"
+                        oninput="renderResidentRequests()">
+
+
+
+                    <select
+                        id="requestFilter"
+                        aria-label="Filter request status"
+                        onchange="renderResidentRequests()">
+
+
+
+                        <option>
+                            All
+                        </option>
+
+
+                        <option>
+                            Pending
+                        </option>
+
+
+                        <option>
+                            Assigned
+                        </option>
+
+
+                        <option>
+                            In Progress
+                        </option>
+
+
+                        <option>
+                            Completed
+                        </option>
+
+
+
+                    </select>
+
+
+
+
+                    <button 
+                        class="secondary"
+                        onclick="loadRequests()">
+
+                        Refresh
+
+                    </button>
+
+
+
+                </div>
+
+
+
+
+
+                <div id="requests" class="card-grid"></div>
+
+
+
+            </section>
+
+
+
+
+
+
+
+
+            <!-- Community Section -->
+            <div class="two-column" id="community">
+
+
+
+                <section class="panel">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>
+                                Community noticeboard
+                            </h2>
+
+
+                            <p>
+                                Updates from your apartment management.
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div id="announcements" class="stack"></div>
+
+
+
+                </section>
+
+
+
+
+
+
+
+
+                <section class="panel">
+
+
+                    <div class="section-heading">
+
+
+                        <div>
+
+
+                            <h2>
+                                Apartment events
+                            </h2>
+
+
+                            <p>
+                                Make time for your community.
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div id="events" class="stack"></div>
+
+
+
+                </section>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- Rating Popup -->
+            <div
+                id="ratingBox"
+                class="popup"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="ratingTitle">
+
+
+
+                <div class="card">
+
+
+
+                    <h2 id="ratingTitle">
+                        How was your service?
+                    </h2>
+
+
+
+                    <p>
+                        Your feedback helps our community.
+                    </p>
+
+
+
+
+                    <input 
+                        type="hidden"
+                        id="ratingRequestId">
+
+
+
+                    <input
+                        type="hidden"
+                        id="ratingProviderId">
+
+
+
+
+
+                    <form onsubmit="event.preventDefault(); submitRating()">
+
+
+
+                        <label for="ratingValue">
+                            Rating
+                        </label>
+
+
+
+                        <select id="ratingValue">
+
+
+                            <option value="5">
+                                5 — Excellent
+                            </option>
+
+
+                            <option value="4">
+                                4 — Good
+                            </option>
+
+
+                            <option value="3">
+                                3 — Average
+                            </option>
+
+
+                            <option value="2">
+                                2 — Poor
+                            </option>
+
+
+                            <option value="1">
+                                1 — Very poor
+                            </option>
+
+
+
+                        </select>
+
+
+
+
+
+                        <label for="ratingComment">
+                            Feedback (optional)
+                        </label>
+
+
+
+                        <textarea 
+                            id="ratingComment"
+                            maxlength="2000">
+                        </textarea>
+
+
+
+
+                        <p 
+                            id="ratingMessage"
+                            class="feedback"
+                            role="status">
+                        </p>
+
+
+
+
+                        <div class="actions">
+
+
+                            <button type="submit">
+                                Submit feedback
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="secondary"
+                                onclick="closeRating()">
+
+                                Cancel
+
+                            </button>
+
+
+                        </div>
+
+
+
+                    </form>
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+        </main>
+
+
+
+
+
+
+        <footer>
+            SmartNest · Apartment maintenance &amp; community management
+        </footer>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Scripts -->
+
+    <script src="js/config.js"></script>
+
+    <script src="js/auth.js"></script>
+
+
+    <script>
+        checkRole("resident");
+    </script>
+
+
+    <script src="js/navbar.js"></script>
+
+    <script src="js/dashboard.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Your service workspace · SmartNest</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body data-role="provider">
+
+
+<a class="skip" href="#main">
+    Skip to content
+</a>
+
+
+
+<aside class="sidebar">
+
+
+<a class="brand" href="login.html">
+
+<span class="brand-icon">
+▥
+</span>
+
+<span>
+SmartNest
+<small>
+APARTMENT COMMUNITY
+</small>
+</span>
+
+</a>
+
+
+
+<p class="nav-label">
+PROVIDER WORKSPACE
+</p>
+
+
+
+<nav aria-label="Main navigation">
+
+
+<a href="provider.html">
+Overview
+</a>
+
+
+<a href="#availability-section">
+Manage Availability
+</a>
+
+
+<a href="#jobs-section">
+My jobs
+</a>
+
+
+</nav>
+
+
+
+<div class="sidebar-note">
+
+
+<span>
+COMMUNITY FIRST
+</span>
+
+
+<h3>
+A better place to call home.
+</h3>
+
+
+<p>
+Maintenance and community, together in one place.
+</p>
+
+
+</div>
+
+
+</aside>
+
+
+
+
+
+<div class="workspace">
+
+
+
+<div id="navbar"></div>
+
+
+
+
+
+<main id="main" class="dashboard">
+
+
+
+
+
+<header class="page-heading">
+
+
+<div>
+
+
+<p class="eyebrow">
+YOUR COMMUNITY, CONNECTED
+</p>
+
+
+
+<h1>
+Your service workspace
+</h1>
+
+
+
+<p>
+Stay organised, manage your visits, and deliver great service.
+</p>
+
+
+</div>
+
+
+
+<span class="today" id="today"></span>
+
+
+</header>
+
+
+
+
+
+
+
+<div class="welcome-banner">
+
+
+<div>
+
+
+<p class="eyebrow">
+SERVICE PROVIDER PORTAL
+</p>
+
+
+<h2>
+Good work makes a great community.
+</h2>
+
+
+<p>
+Check your assigned visits and keep residents updated.
+</p>
+
+
+</div>
+
+
+
+<div class="building-art" aria-hidden="true">
+▥
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Provider Statistics -->
+
+
+<div id="providerStats" class="stats-grid"></div>
+
+
+
+
+
+
+
+<!-- NEW AVAILABILITY SECTION -->
+
+
+<section class="panel" id="availability-section">
+
+
+<div class="section-heading">
+
+
+<div>
+
+
+<h2>
+Manage Availability
+</h2>
+
+
+<p>
+Add the dates and time slots when you are available for services.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="toolbar">
+
+
+<label>
+Available Date
+</label>
+
+
+<input 
+    id="slotDate" 
+    type="date"
+    min="">
+
+
+
+<label>
+Start Time
+</label>
+
+
+<input
+
+type="time"
+
+id="startTime"
+
+>
+
+
+
+
+<label>
+End Time
+</label>
+
+
+<input
+
+type="time"
+
+id="endTime"
+
+>
+
+
+
+<button
+
+onclick="addAvailability()"
+
+>
+
+Add Slot
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<p
+
+id="availabilityMessage"
+
+class="feedback"
+
+>
+
+</p>
+
+
+
+
+
+
+<h3>
+My Available Slots
+</h3>
+
+
+
+<div
+
+id="mySlots"
+
+class="card-grid"
+
+>
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ASSIGNED JOBS -->
+
+
+<section class="panel" id="jobs-section">
+
+
+
+<div class="section-heading">
+
+
+<div>
+
+
+<h2>
+My assigned jobs
+</h2>
+
+
+
+<p>
+Start work when you arrive, then mark it complete when finished.
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="toolbar">
+
+
+
+<input
+
+id="jobSearch"
+
+type="search"
+
+placeholder="Search jobs…"
+
+aria-label="Search jobs"
+
+oninput="renderJobs()"
+
+>
+
+
+
+
+
+<select
+
+id="jobFilter"
+
+aria-label="Filter jobs"
+
+onchange="renderJobs()"
+
+>
+
+
+
+<option>
+All
+</option>
+
+
+
+<option>
+Assigned
+</option>
+
+
+
+<option>
+In Progress
+</option>
+
+
+
+<option>
+Completed
+</option>
+
+
+
+</select>
+
+
+
+
+
+<button
+
+class="secondary"
+
+onclick="loadJobs()"
+
+>
+
+Refresh jobs
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<p
+
+id="message"
+
+class="feedback"
+
+role="status">
+
+</p>
+
+
+
+
+
+
+<div
+
+id="jobs"
+
+class="card-grid">
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+<footer>
+
+SmartNest · Apartment maintenance &amp; community management
+
+</footer>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<script src="js/config.js"></script>
+
+<script src="js/auth.js"></script>
+
+
+<script>
+
+checkRole("provider");
+
+</script>
+
+
+<script src="js/navbar.js"></script>
+
+<script src="js/provider.js"></script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Community overview · SmartNest</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-role="admin">
+
+    <a class="skip" href="#main">
+        Skip to content
+    </a>
+
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <a class="brand" href="login.html">
+            <span class="brand-icon">▥</span>
+
+            <span>
+                SmartNest
+                <small>APARTMENT COMMUNITY</small>
+            </span>
+        </a>
+
+
+        <p class="nav-label">
+            ADMIN WORKSPACE
+        </p>
+
+
+        <nav aria-label="Main navigation">
+            <a href="admin.html">Overview</a>
+            <a href="#tracking">Requests</a>
+            <a href="#directory">Directory</a>
+            <a href="#publish">Community</a>
+        </nav>
+
+
+        <div class="sidebar-note">
+
+            <span>
+                COMMUNITY FIRST
+            </span>
+
+            <h3>
+                A better place to call home.
+            </h3>
+
+            <p>
+                Maintenance and community, together in one place.
+            </p>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- Main Workspace -->
+    <div class="workspace">
+
+
+        <!-- Navbar -->
+        <div id="navbar"></div>
+
+
+
+        <main id="main" class="dashboard">
+
+
+            <!-- Page Header -->
+            <header class="page-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        YOUR COMMUNITY, CONNECTED
+                    </p>
+
+                    <h1>
+                        Community overview
+                    </h1>
+
+                    <p>
+                        Manage maintenance, people, and apartment updates from one workspace.
+                    </p>
+
+                </div>
+
+
+                <span class="today" id="today"></span>
+
+            </header>
+
+
+
+
+            <!-- Dashboard Statistics -->
+            <div id="stats" class="stats-grid"></div>
+
+
+
+
+
+            <!-- Maintenance Analytics -->
+            <section class="panel">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Maintenance snapshot
+                        </h2>
+
+                        <p>
+                            A clear view of the community’s maintenance workload.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="analytics" class="stats-grid compact"></div>
+
+            </section>
+
+
+
+
+
+            <!-- Service Request Tracking -->
+            <section class="panel" id="tracking">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Service request tracking
+                        </h2>
+
+                        <p></p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="toolbar">
+
+                    <input 
+                        id="adminSearch"
+                        type="search"
+                        aria-label="Search service requests"
+                        placeholder="Search resident, complaint or service…"
+                        oninput="applyAdminFilter()"
+                    >
+
+
+                    <button 
+                        class="secondary"
+                        onclick="loadServiceRequests(); loadStats(); loadAnalytics()">
+                        Refresh
+                    </button>
+
+                </div>
+
+
+
+
+                <div class="filter-buttons">
+
+                    <button 
+                        class="secondary"
+                        data-status="All"
+                        onclick="filterRequests('All')">
+                        All
+                    </button>
+
+
+                    <button 
+                        class="secondary"
+                        data-status="Pending"
+                        onclick="filterRequests('Pending')">
+                        Pending
+                    </button>
+
+
+                    <button 
+                        class="secondary"
+                        data-status="Assigned"
+                        onclick="filterRequests('Assigned')">
+                        Assigned
+                    </button>
+
+
+                    <button 
+                        class="secondary"
+                        data-status="In Progress"
+                        onclick="filterRequests('In Progress')">
+                        In Progress
+                    </button>
+
+
+                    <button 
+                        class="secondary"
+                        data-status="Completed"
+                        onclick="filterRequests('Completed')">
+                        Completed
+                    </button>
+
+                </div>
+
+
+
+
+                <div id="serviceRequests" class="card-grid"></div>
+
+
+            </section>
+
+
+
+
+
+
+            <!-- Residents and Providers -->
+            <div class="two-column" id="directory">
+
+
+                <!-- Residents -->
+                <section class="panel">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>
+                                Residents
+                            </h2>
+
+                            <p></p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="residents" class="card-grid"></div>
+
+
+                </section>
+
+
+
+
+
+                <!-- Service Providers -->
+                <section class="panel">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>
+                                Service providers
+                            </h2>
+
+                            <p></p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="providers" class="card-grid"></div>
+
+
+                </section>
+
+
+            </div>
+
+
+
+
+
+
+            <!-- Provider Performance -->
+            <section class="panel">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Provider performance
+                        </h2>
+
+                        <p></p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="providerPerformance" class="card-grid"></div>
+
+
+            </section>
+
+
+
+
+
+
+
+            <!-- Community Management -->
+            <div class="two-column" id="publish">
+
+
+                <!-- Announcement -->
+                <section class="panel">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>
+                                Publish an announcement
+                            </h2>
+
+                            <p></p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <form onsubmit="event.preventDefault(); createAnnouncement()">
+
+
+                        <label for="title">
+                            Announcement title
+                        </label>
+
+
+                        <input 
+                            id="title"
+                            type="text"
+                            required
+                            maxlength="160"
+                        >
+
+
+
+                        <label for="message">
+                            Message
+                        </label>
+
+
+                        <textarea
+                            id="message"
+                            required
+                            maxlength="2000"
+                            placeholder="Add the details here…">
+                        </textarea>
+
+
+
+                        <label for="priority">
+                            Priority
+                        </label>
+
+
+                        <select id="priority">
+
+                            <option value="Normal">
+                                Normal
+                            </option>
+
+                            <option value="Important">
+                                Important
+                            </option>
+
+                            <option value="Emergency">
+                                Emergency
+                            </option>
+
+                        </select>
+
+
+
+                        <button type="submit">
+                            Publish announcement
+                        </button>
+
+
+                        <p 
+                            id="announcementMessage"
+                            class="feedback"
+                            role="status"
+                            aria-live="polite">
+                        </p>
+
+
+                    </form>
+
+
+                </section>
+
+
+
+
+
+
+
+                <!-- Events -->
+                <section class="panel">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>
+                                Plan a community event
+                            </h2>
+
+                            <p></p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <form onsubmit="event.preventDefault(); createApartmentEvent()">
+
+
+
+                        <label for="eventTitle">
+                            Event name
+                        </label>
+
+
+                        <input
+                            id="eventTitle"
+                            type="text"
+                            required
+                            maxlength="160"
+                        >
+
+
+
+                        <label for="eventDescription">
+                            Description
+                        </label>
+
+
+                        <textarea
+                            id="eventDescription"
+                            required
+                            maxlength="2000"
+                            placeholder="Add the details here…">
+                        </textarea>
+
+
+
+
+
+                        <div class="form-row">
+
+
+                            <div>
+
+                                <label for="eventDate">
+                                    Date
+                                </label>
+
+
+                                <input
+                                    id="eventDate"
+                                    type="date"
+                                    required
+                                >
+
+                            </div>
+
+
+
+
+                            <div>
+
+                                <label for="eventTime">
+                                    Time
+                                </label>
+
+
+                                <input
+                                    id="eventTime"
+                                    type="time"
+                                    required
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                        <label for="venue">
+                            Venue
+                        </label>
+
+
+                        <input
+                            id="venue"
+                            type="text"
+                            required
+                            maxlength="160"
+                        >
+
+
+
+
+                        <button type="submit">
+                            Create community event
+                        </button>
+
+
+
+                        <p
+                            id="eventMessage"
+                            class="feedback"
+                            role="status"
+                            aria-live="polite">
+                        </p>
+
+
+
+                    </form>
+
+
+                </section>
+
+
+            </div>
+
+
+
+        </main>
+
+
+
+
+
+        <!-- Footer -->
+        <footer>
+            SmartNest · Apartment maintenance &amp; community management
+        </footer>
+
+
+
+    </div>
+
+    <!-- Scripts -->
+
+    <script src="js/config.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script>
+        checkRole("admin");
+    </script>
+
+    <script src="js/navbar.js"></script>
+
+    <script src="js/admin.js"></script>
+
+
+</body>
+
+</html>

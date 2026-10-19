@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Create your account · SmartNest</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="auth-page">
+
+    <main class="register-layout">
+
+        <section class="auth-story">
+
+            <a class="brand" href="login.html">
+
+                <span class="brand-icon">
+                    ▥
+                </span>
+
+                <span>
+                    SmartNest
+                    <small>APARTMENT COMMUNITY</small>
+                </span>
+
+            </a>
+
+
+            <div>
+
+                <p class="eyebrow">
+                    WELCOME TO BETTER APARTMENT LIVING
+                </p>
+
+                <h1>
+                    Your home.<br>
+                    Your community.<br>
+                    Connected.
+                </h1>
+
+                <p>
+                    One place for maintenance, trusted service providers,
+                    and the moments that bring neighbours together.
+                </p>
+
+                <div class="story-features">
+
+                    <span>
+                        01 &nbsp; Report &amp; track repairs
+                    </span>
+
+                    <span>
+                        02 &nbsp; Book maintenance visits
+                    </span>
+
+                    <span>
+                        03 &nbsp; Stay in the community loop
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="apartment-scene" aria-hidden="true">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+
+
+            <small>
+                SMARTNEST · BUILT FOR COMMUNITY LIFE
+            </small>
+
+        </section>
+
+
+
+
+
+        <section class="auth-form">
+
+            <div class="auth-card">
+
+                <p class="eyebrow">
+                    SMARTNEST REGISTRATION
+                </p>
+
+                <h2>
+                    Create your account
+                </h2>
+
+                <p>
+                    Join your apartment community as a resident or service provider.
+                </p>
+
+
+                <form onsubmit="event.preventDefault(); register()">
+
+
+                    <label for="name">
+                        Full name
+                    </label>
+
+                    <input
+                        id="name"
+                        type="text"
+                        required
+                        autocomplete="name"
+                        maxlength="100"
+                    >
+
+
+                    <label for="email">
+                        Email address
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        required
+                        autocomplete="email"
+                    >
+
+
+                    <label for="phone">
+                        Phone number
+                    </label>
+
+                    <input
+                        id="phone"
+                        type="tel"
+                        required
+                        autocomplete="tel"
+                        pattern="[0-9+() \-]{7,20}"
+                    >
+
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        id="password"
+                        type="password"
+                        required
+                        autocomplete="new-password"
+                    >
+
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        onclick="togglePassword(this)"
+                        aria-pressed="false">
+
+                        Show password
+
+                    </button>
+
+
+
+                    <label for="role">
+                        I am a
+                    </label>
+
+                    <select
+                        id="role"
+                        onchange="showServiceType()">
+
+                        <option value="resident">
+                            Resident
+                        </option>
+
+                        <option value="provider">
+                            Service provider
+                        </option>
+
+                    </select>
+
+
+
+                    <div id="serviceBox" hidden>
+
+
+                        <label for="service_type">
+                            Service specialisation
+                        </label>
+
+
+                        <select id="service_type">
+
+                            <option value="Plumber">
+                                Plumber
+                            </option>
+
+                            <option value="Electrician">
+                                Electrician
+                            </option>
+
+                            <option value="Cleaner">
+                                Cleaner
+                            </option>
+
+                            <option value="Carpenter">
+                                Carpenter
+                            </option>
+
+                        </select>
+
+
+                    </div>
+
+
+
+                    <button type="submit">
+                        Create account <span>→</span>
+                    </button>
+
+
+                    <p
+                        id="message"
+                        class="feedback"
+                        role="status"
+                        aria-live="polite">
+                    </p>
+
+
+                </form>
+
+
+                <p class="auth-switch">
+                    Already have an account?
+                    <a href="login.html">
+                        Sign in
+                    </a>
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+
+    <script src="js/config.js"></script>
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>
